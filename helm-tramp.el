@@ -30,12 +30,8 @@
 (require 'cl-lib)
 
 (defgroup helm-tramp nil
-  "tramp generator command with helm interface"
+  "tramp with helm interface"
   :group 'helm)
-
-(defcustom helm-tramp-limit 10
-  "Limit of menu"
-  :group 'helm-tramp)
 
 (defun helm-tramp--candidates ()
   (let ((source (split-string
@@ -60,7 +56,6 @@
 	   (concat "/" tramp-default-method ":" host "|sudo:" host ":/") t)
 	  )))
     hosts))
-
 
 (defun helm-tramp-open (path)
   "Tramp open.  PATH is path."
