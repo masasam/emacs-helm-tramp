@@ -54,10 +54,10 @@
         (unless (string= host "*")
           (add-to-list
            'hosts
-	   (format "/ssh:%s:/" host) t)
+	   (concat "/" tramp-default-method ":" host ":/") t)
 	  (add-to-list
            'hosts
-	   (concat "/ssh:" host "|sudo:" host ":/") t)
+	   (concat "/" tramp-default-method ":" host "|sudo:" host ":/") t)
 	  )))
     hosts))
 
