@@ -57,7 +57,7 @@
     hosts))
 
 (defun helm-tramp-open (path)
-  "Tramp open.  PATH is path."
+  "Tramp open with path."
   (find-file path))
 
 (defvar helm-tramp--source
