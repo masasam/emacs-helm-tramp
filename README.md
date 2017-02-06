@@ -1,6 +1,6 @@
 # helm-tramp
 
-tramp with helm interface
+Tramp with helm interface
 
 ## Image
 
@@ -24,7 +24,7 @@ Selecting the list with sudo will lead to the server as root
 
 ![helm-tramp5](image/image5.png)
 
-you can edit your server's nginx.conf on your emacs!  
+You can edit your server's nginx.conf on your emacs!  
 
 ![helm-exit](image/exit.png)
 
