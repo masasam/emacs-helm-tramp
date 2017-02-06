@@ -12,6 +12,9 @@ tramp with helm interface
 - helm 1.7.7 or higher
 
 
-## Command
+## Sample Configuration
+
+(setq tramp-default-method "ssh")
+(defalias 'exit-tramp 'tramp-cleanup-all-buffers)
 
 #### `M-x helm-tramp`
