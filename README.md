@@ -9,6 +9,7 @@ tramp with helm interface
 
 ## Requirements
 
+- Emacs 24 or higher
 - helm 1.7.7 or higher
 
 
