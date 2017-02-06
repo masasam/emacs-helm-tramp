@@ -22,7 +22,7 @@
 
 ;;; Commentary:
 
-;; tramp generator command with helm interface
+;; tramp with helm interface
 
 ;;; Code:
 
