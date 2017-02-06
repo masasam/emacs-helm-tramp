@@ -4,11 +4,14 @@ tramp with helm interface
 
 ## Image
 
+
 M-x helm-tramp  
 
 ![helm-tramp1](image/image1.png)
 
-Display server list from ~/.ssh/config in helm  
+
+Display server list from your ~/.ssh/config in helm  
+
 
 ![helm-tramp2](image/image2.png)
 
