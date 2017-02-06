@@ -47,10 +47,10 @@
 	(if (string-match "\\`[ \t\n\r]+" host)
 	    (replace-match "" t t host))
         (unless (string= host "*")
-          (add-to-list
+          (push
            'hosts
 	   (concat "/" tramp-default-method ":" host ":/") t)
-	  (add-to-list
+	  (push
            'hosts
 	   (concat "/" tramp-default-method ":" host "|sudo:" host ":/") t)
 	  )))
