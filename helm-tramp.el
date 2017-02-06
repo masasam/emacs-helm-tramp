@@ -67,7 +67,7 @@
   (find-file path))
 
 (defvar helm-tramp--source
-  (helm-build-sync-source "Menu"
+  (helm-build-sync-source "Tramp"
     :candidates #'helm-tramp--candidates
     :volatile t
     :action (helm-make-actions
