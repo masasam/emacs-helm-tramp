@@ -14,7 +14,7 @@ tramp with helm interface
 
 ## Sample Configuration
 
-(setq tramp-default-method "ssh")
-(defalias 'exit-tramp 'tramp-cleanup-all-buffers)
+(setq tramp-default-method "ssh")  
+(defalias 'exit-tramp 'tramp-cleanup-all-buffers)  
 
 #### `M-x helm-tramp`
