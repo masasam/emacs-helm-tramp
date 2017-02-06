@@ -16,5 +16,6 @@ tramp with helm interface
 
 (setq tramp-default-method "ssh")  
 (defalias 'exit-tramp 'tramp-cleanup-all-buffers)  
+(define-key global-map (kbd "C-c s") 'helm-tramp)  
 
 #### `M-x helm-tramp`
