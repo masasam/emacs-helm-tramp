@@ -28,8 +28,8 @@ You can edit your server's nginx.conf on your emacs!
 
 ![helm-exit](image/exit.png)
 
-When you finish editing nginx.conf you clean the tramp buffer with tramp-cleanup-all-buffers.  
-Since I can not remember tramp-cleanup-all-buffers I set a defalias called exit-tramp.  
+When you finish editing nginx.conf you clean the tramp buffer with tramp-cleanup-all-buffers command.  
+Since I can not remember tramp-cleanup-all-buffers command I set a defalias called exit-tramp.  
 
 ## Requirements
 
