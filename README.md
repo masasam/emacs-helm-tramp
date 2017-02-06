@@ -4,7 +4,9 @@ tramp with helm interface
 
 ## Image
 
-![helm-tramp](image/helm-tramp.gif)
+![helm-tramp1](image/image1.png)
+![helm-tramp1](image/image2.png)
+![helm-tramp1](image/image3.png)
 
 
 ## Requirements
