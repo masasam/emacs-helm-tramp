@@ -41,7 +41,7 @@
         (hosts (list)))
     (dolist (host source)
       (when (string-match "[H\\|h]ost +\\(.+?\\)$" host)
-        (setq host (substring host (match-beginning 1) (match-end 2)))
+	(setq host (match-string 1 host))
 	(if (string-match "[ \t\n\r]+\\'" host)
 	    (replace-match "" t t host))
 	(if (string-match "\\`[ \t\n\r]+" host)
