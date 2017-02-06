@@ -1,4 +1,4 @@
-;;; helm-tramp.el --- Tramp with helm interface -*- lexical-binding: t; -*-
+;;; helm-tramp.el --- Tramp with helm interface
 
 ;; Copyright (C) 2017 by masasam
 
@@ -47,10 +47,10 @@
 	(if (string-match "\\`[ \t\n\r]+" host)
 	    (replace-match "" t t host))
         (unless (string= host "*")
-          (push
+          (add-to-list
            'hosts
 	   (concat "/" tramp-default-method ":" host ":/") t)
-	  (push
+	  (add-to-list
            'hosts
 	   (concat "/" tramp-default-method ":" host "|sudo:" host ":/") t)
 	  )))
