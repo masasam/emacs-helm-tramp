@@ -27,7 +27,6 @@
 ;;; Code:
 
 (require 'helm)
-(require 'cl-lib)
 
 (defgroup helm-tramp nil
   "tramp with helm interface"
