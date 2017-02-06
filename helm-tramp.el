@@ -65,8 +65,7 @@
     :candidates #'helm-tramp--candidates
     :volatile t
     :action (helm-make-actions
-             "Tramp" #'helm-tramp-open
-             "Insert" #'insert)))
+             "Tramp" #'helm-tramp-open)))
 
 ;;;###autoload
 (defun helm-tramp ()
