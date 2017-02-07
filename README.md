@@ -38,6 +38,7 @@ Since I can not remember tramp-cleanup-all-buffers command I set a defalias call
 
 ## Sample Configuration
 
+	(setq tramp-default-method "ssh")
     (defalias 'exit-tramp 'tramp-cleanup-all-buffers)
     (define-key global-map (kbd "C-c s") 'helm-tramp)
 
