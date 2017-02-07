@@ -28,8 +28,6 @@
 
 (require 'helm)
 
-(defvar tramp-default-method "ssh")
-
 (defgroup helm-tramp nil
   "tramp with helm interface"
   :group 'helm)
