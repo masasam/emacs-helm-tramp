@@ -2,7 +2,7 @@
 
 Tramp with helm interface
 
-## Image
+## Screenshot
 
 M-x helm-tramp  
 
@@ -35,6 +35,11 @@ Since I can not remember tramp-cleanup-all-buffers command I set a defalias call
 
 - Emacs 24 or higher
 - helm 1.7.7 or higher
+
+## Installation
+
+You can install `helm-tramp.el` from [MELPA](http://melpa.org) with package.el
+(`M-x package-install helm-tramp`).
 
 ## Sample Configuration
 
