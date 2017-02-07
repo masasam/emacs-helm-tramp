@@ -1,4 +1,4 @@
-# helm-tramp
+# helm-tramp [![melpa badge][melpa-badge]][melpa-link] 
 
 Tramp with helm interface
 
