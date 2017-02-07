@@ -5,7 +5,7 @@
 ;; Author: masasam
 ;; URL: https://github.com/masasam/emacs-helm-tramp
 ;; Version: 0.01
-;; Package-Requires: ((helm "1.7.7"))
+;; Package-Requires: ((helm "1.7.7") (emacs "24"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
