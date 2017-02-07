@@ -69,6 +69,7 @@
 
 ;;;###autoload
 (defun helm-tramp ()
+  "Open your ~/.ssh/config with helm interface."
   (interactive)
   (helm :sources '(helm-tramp--source) :buffer "*helm tramp*"))
 
