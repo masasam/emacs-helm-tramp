@@ -1,4 +1,4 @@
-# helm-tramp
+# helm-tramp [![melpa badge][melpa-badge]][melpa-link]
 
 Tramp with helm interface
 
@@ -41,3 +41,7 @@ Since I can not remember tramp-cleanup-all-buffers command I set a defalias call
     (setq tramp-default-method "ssh")
     (defalias 'exit-tramp 'tramp-cleanup-all-buffers)
     (define-key global-map (kbd "C-c s") 'helm-tramp)
+
+
+[melpa-link]: http://melpa.org/#/helm-tramp
+[melpa-badge]: http://melpa.org/packages/helm-tramp-badge.svg
