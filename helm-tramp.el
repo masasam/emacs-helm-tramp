@@ -27,6 +27,7 @@
 ;;; Code:
 
 (require 'helm)
+(require 'tramp)
 
 (defgroup helm-tramp nil
   "tramp with helm interface"
