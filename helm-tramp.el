@@ -57,7 +57,7 @@
     (reverse hosts)))
 
 (defun helm-tramp-open (path)
-  "Tramp open with path."
+  "Tramp open with PATH."
   (find-file path))
 
 (defvar helm-tramp--source
