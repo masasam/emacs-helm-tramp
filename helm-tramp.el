@@ -72,6 +72,8 @@
   "Open your ~/.ssh/config with helm interface.
 You can connect your server with tramp"
   (interactive)
+  (unless (file-exists-p "~/.ssh/config")
+    (error "There is no ~/.ssh/config"))
   (helm :sources '(helm-tramp--source) :buffer "*helm tramp*"))
 
 (provide 'helm-tramp)
