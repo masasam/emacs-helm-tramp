@@ -8,23 +8,23 @@ Tramp with helm interface
 
 ![helm-tramp1](image/image1.png)
 
-    Display server list from your ~/.ssh/config in helm interface
+Display server list from your ~/.ssh/config in helm interface
 
 ![helm-tramp2](image/image2.png)
 
-    Filter by helm
+Filter by helm
 
 ![helm-tramp3](image/image3.png)
 
-    You can connect your server with tramp
+You can connect your server with tramp
 
 ![helm-tramp4](image/image4.png)
 
-    Selecting the list with sudo will lead to the server as root
+Selecting the list with sudo will lead to the server as root
 
 ![helm-tramp5](image/image5.png)
 
-    You can edit your server's nginx.conf on your emacs!
+You can edit your server's nginx.conf on your emacs!
 
 ![helm-exit](image/exit.png)
 
