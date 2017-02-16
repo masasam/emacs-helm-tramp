@@ -47,7 +47,7 @@ You can install `helm-tramp.el` from [MELPA](http://melpa.org) with package.el
     (defalias 'exit-tramp 'tramp-cleanup-all-buffers)
     (define-key global-map (kbd "C-c s") 'helm-tramp)
 
-If the shell of the server is zsh it is recommended to connect with bash  
+If the shell of the server is zsh it is recommended to connect with bash.  
 
     (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
 
