@@ -1,4 +1,4 @@
-# helm-tramp [![melpa badge][melpa-badge]][melpa-link]
+# helm-tramp [![melpa badge][melpa-badge]][melpa-link] [![melpa stable badge][melpa-stable-badge]][melpa-stable-link]
 
 Tramp with helm interface
 
@@ -53,3 +53,5 @@ If the shell of the server is zsh it is recommended to connect with bash.
 
 [melpa-link]: http://melpa.org/#/helm-tramp
 [melpa-badge]: http://melpa.org/packages/helm-tramp-badge.svg
+[melpa-stable-link]: http://stable.melpa.org/#/helm-tramp
+[melpa-stable-badge]: http://stable.melpa.org/packages/helm-tramp-badge.svg
