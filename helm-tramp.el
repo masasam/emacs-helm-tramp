@@ -1,11 +1,11 @@
 ;;; helm-tramp.el --- Tramp with helm interface -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2017 by masasam
+;; Copyright (C) 2017 by Masashi Miyaura
 
-;; Author: masasam
+;; Author: Masashi Miyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 0.01
-;; Package-Requires: ((helm "1.7.7") (emacs "24"))
+;; Version: 0.2
+;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -52,7 +52,7 @@
 	   (concat "/" tramp-default-method ":" host ":/")
 	   hosts)
 	  (push
-	   (concat "/" tramp-default-method ":" host "|sudo:" host ":/")
+	   (concat "/ssh:" host "|sudo:" host ":/")
 	   hosts))))
     (reverse hosts)))
 

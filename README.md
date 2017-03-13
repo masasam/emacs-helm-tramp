@@ -8,7 +8,7 @@ Tramp with helm interface
 
 ![helm-tramp1](image/image1.png)
 
-Display server list from your ~/.ssh/config in helm interface
+Display server list from your ~/.ssh/config with helm interface
 
 ![helm-tramp2](image/image2.png)
 
@@ -33,8 +33,8 @@ Since I can not remember `tramp-cleanup-all-buffers` command I set a defalias ca
 
 ## Requirements
 
-- Emacs 24 or higher
-- helm 1.7.7 or higher
+- Emacs 24.3 or higher
+- helm 2.0 or higher
 
 ## Installation
 
