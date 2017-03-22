@@ -24,6 +24,10 @@ Selecting the list with sudo will lead to the server as root
 
 ![helm-tramp5](image/image5.png)
 
+If you are using [docker-tramp](https://github.com/emacs-pe/docker-tramp.el), docker is also supplemented
+
+![docker-tramp](image/docker-tramp.png)
+
 You can edit your server's nginx.conf on your emacs!
 
 ![helm-exit](image/exit.png)
