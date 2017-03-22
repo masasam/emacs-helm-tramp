@@ -4,4 +4,5 @@
 (package-file "helm-tramp.el")
 
 (development
- (depends-on "helm"))
+ (depends-on "helm")
+ (depends-on "docker-tramp"))
