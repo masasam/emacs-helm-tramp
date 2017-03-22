@@ -4,7 +4,7 @@
 
 ;; Author: Masashi Miyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 0.2
+;; Version: 0.3
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -22,12 +22,15 @@
 
 ;;; Commentary:
 
-;; tramp with helm interface
+;; helm-tramp provides interfaces of Tramp
+;; You can also use tramp with helm interface as root
+;; If you use it with docker-tramp, you can also use docker with helm interface
 
 ;;; Code:
 
 (require 'helm)
 (require 'tramp)
+(require 'cl-lib)
 
 (defgroup helm-tramp nil
   "tramp with helm interface"
@@ -54,6 +57,12 @@
 	  (push
 	   (concat "/ssh:" host "|sudo:" host ":/")
 	   hosts))))
+    (when (featurep 'docker-tramp)
+      (cl-loop for line in (cdr (ignore-errors (apply #'process-lines "docker" (list "container" "ls"))))
+	       for info = (split-string line "[[:space:]]+" t)
+	       collect (push
+			(concat "/docker:" (car info) ":/")
+			hosts)))
     (reverse hosts)))
 
 (defun helm-tramp-open (path)
@@ -74,6 +83,9 @@ You can connect your server with tramp"
   (interactive)
   (unless (file-exists-p "~/.ssh/config")
     (error "There is no ~/.ssh/config"))
+  (when (featurep 'docker-tramp)
+    (unless (executable-find "docker")
+      (error "'docker' is not installed")))
   (helm :sources '(helm-tramp--source) :buffer "*helm tramp*"))
 
 (provide 'helm-tramp)
