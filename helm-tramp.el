@@ -4,7 +4,7 @@
 
 ;; Author: Masashi Miyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 0.3.1
+;; Version: 0.3.2
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -62,7 +62,7 @@
 	   (concat "/ssh:" host "|sudo:" host ":/")
 	   hosts))))
     (when (featurep 'docker-tramp)
-      (cl-loop for line in (cdr (ignore-errors (apply #'process-lines "docker" (list "container" "ls"))))
+      (cl-loop for line in (cdr (ignore-errors (apply #'process-lines "docker" (list "ps"))))
 	       for info = (split-string line "[[:space:]]+" t)
 	       collect (progn (push
 			       (concat "/docker:" (car info) ":/")
