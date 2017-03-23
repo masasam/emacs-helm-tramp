@@ -59,6 +59,10 @@ If the shell of the server is zsh it is recommended to connect with bash.
 
     (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
 
+If you want to specify the user name to connect with docker-tramp  
+
+	(setq helm-tramp-docker-user "username")
+
 [melpa-link]: http://melpa.org/#/helm-tramp
 [melpa-badge]: http://melpa.org/packages/helm-tramp-badge.svg
 [melpa-stable-link]: http://stable.melpa.org/#/helm-tramp

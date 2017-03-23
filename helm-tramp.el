@@ -4,7 +4,7 @@
 
 ;; Author: Masashi Miyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 0.3
+;; Version: 0.3.1
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -36,6 +36,10 @@
   "tramp with helm interface"
   :group 'helm)
 
+(defcustom helm-tramp-docker-user nil
+  "If you want to use login user name when docker-tramp used, set variable."
+  :type 'string)
+
 (defun helm-tramp--candidates ()
   (let ((source (split-string
                  (with-temp-buffer
@@ -60,9 +64,13 @@
     (when (featurep 'docker-tramp)
       (cl-loop for line in (cdr (ignore-errors (apply #'process-lines "docker" (list "container" "ls"))))
 	       for info = (split-string line "[[:space:]]+" t)
-	       collect (push
-			(concat "/docker:" (car info) ":/")
-			hosts)))
+	       collect (progn (push
+			       (concat "/docker:" (car info) ":/")
+			       hosts)
+			      (unless (null helm-tramp-docker-user)
+				(push
+				 (concat "/docker:" helm-tramp-docker-user "@" (car info) ":/")
+				 hosts)))))
     (reverse hosts)))
 
 (defun helm-tramp-open (path)
