@@ -1,4 +1,4 @@
-;;; helm-tramp.el --- Tramp with helm interface -*- lexical-binding: t; -*-
+;;; helm-tramp.el --- Tramp with helm interface for server and docker -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2017 by Masashi Miyaura
 
@@ -33,7 +33,7 @@
 (require 'cl-lib)
 
 (defgroup helm-tramp nil
-  "tramp with helm interface"
+  "Tramp with helm interface for server and docker"
   :group 'helm)
 
 (defcustom helm-tramp-docker-user nil
