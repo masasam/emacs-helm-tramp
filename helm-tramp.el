@@ -41,6 +41,7 @@
   :type 'string)
 
 (defun helm-tramp--candidates ()
+  "Collect candidates for helm-tramp."
   (let ((source (split-string
                  (with-temp-buffer
                    (insert-file-contents "~/.ssh/config")
