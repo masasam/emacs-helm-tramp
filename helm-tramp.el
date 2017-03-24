@@ -1,8 +1,8 @@
 ;;; helm-tramp.el --- Tramp with helm interface for server and docker -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2017 by Masashi Miyaura
+;; Copyright (C) 2017 by Masashı Mıyaura
 
-;; Author: Masashi Miyaura
+;; Author: Masashı Mıyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
 ;; Version: 0.3.2
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))

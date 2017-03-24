@@ -8,19 +8,19 @@ Tramp with helm interface for server and docker
 
 ![helm-tramp1](image/image1.png)
 
-Display server list from your ~/.ssh/config with helm interface
+Display server list from your ~/.ssh/config with helm interface.
 
 ![helm-tramp2](image/image2.png)
 
-Filter by helm
+Filter by helm.
 
 ![helm-tramp3](image/image3.png)
 
-You can connect your server with tramp
+You can connect your server with tramp.
 
 ![helm-tramp4](image/image4.png)
 
-Selecting the list with sudo will lead to the server as root
+Selecting the list with sudo will lead to the server as root.
 
 ![helm-tramp5](image/image5.png)
 
@@ -36,8 +36,9 @@ You can edit docker container on your emacs!
 
 ![helm-exit](image/exit.png)
 
-When you finish editing nginx.conf you clean the tramp buffer with `tramp-cleanup-all-buffers` command.  
-Since I can not remember `tramp-cleanup-all-buffers` command I set a defalias called `exit-tramp`.  
+When you finish editing nginx.conf you clean the tramp buffer with `tramp-cleanup-all-buffers` command.
+
+Since I can not remember `tramp-cleanup-all-buffers` command I set a defalias called `exit-tramp`.
 
 ## Requirements
 
@@ -47,9 +48,10 @@ Since I can not remember `tramp-cleanup-all-buffers` command I set a defalias ca
 ## Installation
 
 You can install `helm-tramp.el` from [MELPA](http://melpa.org) with package.el
-(`M-x package-install helm-tramp`).  
+(`M-x package-install helm-tramp`).
+
 You can install `docker-tramp.el` from [MELPA](http://melpa.org) with package.el
-(`M-x package-install docker-tramp`).  
+(`M-x package-install docker-tramp`).
 
 ## Sample Configuration
 
@@ -57,11 +59,11 @@ You can install `docker-tramp.el` from [MELPA](http://melpa.org) with package.el
     (defalias 'exit-tramp 'tramp-cleanup-all-buffers)
     (define-key global-map (kbd "C-c s") 'helm-tramp)
 
-If the shell of the server is zsh it is recommended to connect with bash.  
+If the shell of the server is zsh it is recommended to connect with bash.
 
     (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
 
-If you want to specify the user name to connect with docker-tramp  
+If you want to specify the user name to connect with docker-tramp.
 
 	(setq helm-tramp-docker-user "username")
 
