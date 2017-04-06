@@ -2,7 +2,9 @@
 
 Tramp with helm interface for server and docker
 
-## Screenshot
+## Screencast
+
+![helm-tramp-gif](image/helm-tramp.gif)
 
     M-x helm-tramp
 
