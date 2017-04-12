@@ -1,4 +1,4 @@
-;;; helm-tramp.el --- Tramp with helm interface for server and docker -*- lexical-binding: t; -*-
+;;; helm-tramp.el --- Tramp helm interface for ssh server and docker -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2017 by Masashı Mıyaura
 
