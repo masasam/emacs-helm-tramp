@@ -1,6 +1,6 @@
 # helm-tramp [![melpa badge][melpa-badge]][melpa-link] [![melpa stable badge][melpa-stable-badge]][melpa-stable-link]
 
-Tramp with helm interface for server and docker
+Tramp helm interface for ssh server and docker
 
 ## Screencast
 
