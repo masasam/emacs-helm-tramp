@@ -4,7 +4,7 @@
 
 ;; Author: Masashı Mıyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 0.3.3
+;; Version: 0.4.3
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -33,7 +33,7 @@
 (require 'cl-lib)
 
 (defgroup helm-tramp nil
-  "Tramp with helm interface for server and docker"
+  "Tramp with helm interface for ssh server and docker"
   :group 'helm)
 
 (defcustom helm-tramp-docker-user nil
@@ -73,6 +73,7 @@
 				(push
 				 (concat "/docker:" helm-tramp-docker-user "@" (car info) ":/")
 				 hosts)))))
+    (push "/sudo:root@localhost:/" hosts)
     (reverse hosts)))
 
 (defun helm-tramp-open (path)
