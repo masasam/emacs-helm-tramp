@@ -73,6 +73,11 @@
 				(push
 				 (concat "/docker:" helm-tramp-docker-user "@" (car info) ":/")
 				 hosts)))))
+    (when (featurep 'vagrant-tramp)
+      (cl-loop for box-name in (map 'list 'cadr (vagrant-tramp--completions))
+               do (progn
+                    (push (concat "/vagrant:" box-name ":/") hosts)
+                    (push (concat "/vagrant:" box-name "|sudo:" box-name ":/") hosts))))
     (push "/sudo:root@localhost:/" hosts)
     (reverse hosts)))
 
@@ -97,6 +102,9 @@ You can connect your server with tramp"
   (when (featurep 'docker-tramp)
     (unless (executable-find "docker")
       (error "'docker' is not installed")))
+  (when (featurep 'vagrant-tramp)
+    (unless (executable-find "vagrant")
+      (error "'vagrant' is not installed")))
   (helm :sources '(helm-tramp--source) :buffer "*helm tramp*"))
 
 (provide 'helm-tramp)
