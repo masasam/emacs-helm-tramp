@@ -1,6 +1,6 @@
 # helm-tramp [![melpa badge][melpa-badge]][melpa-link] [![melpa stable badge][melpa-stable-badge]][melpa-stable-link]
 
-Tramp helm interface for ssh server and docker
+Tramp helm interface for ssh server and docker and vagrant
 
 ## Screencast
 
@@ -34,6 +34,8 @@ You can edit your server's nginx.conf on your emacs!
 
 If you are using [docker-tramp](https://github.com/emacs-pe/docker-tramp.el), docker is also supplemented
 
+If you are using [vagrant-tramp](https://github.com/dougm/vagrant-tramp), vagrant is also supplemented
+
 ![docker-tramp1](image/docker-tramp1.png)
 
 You can edit docker container on your emacs!
@@ -56,6 +58,9 @@ You can install `helm-tramp.el` from [MELPA](http://melpa.org) with package.el
 
 You can install `docker-tramp.el` from [MELPA](http://melpa.org) with package.el
 (`M-x package-install docker-tramp`).
+
+You can install `vagrant-tramp.el` from [MELPA](http://melpa.org) with package.el
+(`M-x package-install vagrant-tramp`).
 
 ## Sample Configuration
 

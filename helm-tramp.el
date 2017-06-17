@@ -1,10 +1,10 @@
-;;; helm-tramp.el --- Tramp helm interface for ssh server and docker -*- lexical-binding: t; -*-
+;;; helm-tramp.el --- Tramp helm interface for ssh, docker, vagrant -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2017 by Masashı Mıyaura
 
 ;; Author: Masashı Mıyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 0.4.3
+;; Version: 0.5.3
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -25,6 +25,7 @@
 ;; helm-tramp provides interfaces of Tramp
 ;; You can also use tramp with helm interface as root
 ;; If you use it with docker-tramp, you can also use docker with helm interface
+;; If you use it with vagrant-tramp, you can also use vagrant with helm interface
 
 ;;; Code:
 
@@ -33,7 +34,7 @@
 (require 'cl-lib)
 
 (defgroup helm-tramp nil
-  "Tramp with helm interface for ssh server and docker"
+  "Tramp with helm interface for ssh, docker, vagrant"
   :group 'helm)
 
 (defcustom helm-tramp-docker-user nil
