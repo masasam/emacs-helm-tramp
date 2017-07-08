@@ -4,7 +4,7 @@
 
 ;; Author: Masashı Mıyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 0.5.3
+;; Version: 0.5.4
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -64,7 +64,7 @@
 	  (push
 	   (concat "/ssh:" host "|sudo:" host ":/")
 	   hosts))))
-    (when (featurep 'docker-tramp)
+    (when (package-installed-p 'docker-tramp)
       (cl-loop for line in (cdr (ignore-errors (apply #'process-lines "docker" (list "ps"))))
 	       for info = (split-string line "[[:space:]]+" t)
 	       collect (progn (push
@@ -74,7 +74,7 @@
 				(push
 				 (concat "/docker:" helm-tramp-docker-user "@" (car info) ":/")
 				 hosts)))))
-    (when (featurep 'vagrant-tramp)
+    (when (package-installed-p 'vagrant-tramp)
       (cl-loop for box-name in (map 'list 'cadr (vagrant-tramp--completions))
                do (progn
                     (push (concat "/vagrant:" box-name ":/") hosts)
@@ -100,10 +100,10 @@ You can connect your server with tramp"
   (interactive)
   (unless (file-exists-p "~/.ssh/config")
     (error "There is no ~/.ssh/config"))
-  (when (featurep 'docker-tramp)
+  (when (package-installed-p 'docker-tramp)
     (unless (executable-find "docker")
       (error "'docker' is not installed")))
-  (when (featurep 'vagrant-tramp)
+  (when (package-installed-p 'vagrant-tramp)
     (unless (executable-find "vagrant")
       (error "'vagrant' is not installed")))
   (helm :sources '(helm-tramp--source) :buffer "*helm tramp*"))
