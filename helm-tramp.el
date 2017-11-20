@@ -4,7 +4,7 @@
 
 ;; Author: Masashı Mıyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 0.5.4
+;; Version: 0.6.4
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -71,9 +71,16 @@
 			       (concat "/docker:" (car info) ":/")
 			       hosts)
 			      (unless (null helm-tramp-docker-user)
-				(push
-				 (concat "/docker:" helm-tramp-docker-user "@" (car info) ":/")
-				 hosts)))))
+				(if (listp helm-tramp-docker-user)
+				    (let ((docker-user helm-tramp-docker-user))
+				      (while docker-user
+					(push
+					 (concat "/docker:" (car docker-user) "@" (car info) ":/")
+					 hosts)
+					(pop docker-user)))
+				  (push
+				   (concat "/docker:" helm-tramp-docker-user "@" (car info) ":/")
+				   hosts))))))
     (when (package-installed-p 'vagrant-tramp)
       (cl-loop for box-name in (map 'list 'cadr (vagrant-tramp--completions))
                do (progn

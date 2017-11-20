@@ -76,6 +76,10 @@ If you want to specify the user name to connect with docker-tramp.
 
 	(setq helm-tramp-docker-user "username")
 
+If you want to specify multiple user name list to connect with docker-tramp.
+
+	(setq helm-tramp-docker-user '("username1" "username2" "username3" "username4"))
+
 [melpa-link]: http://melpa.org/#/helm-tramp
 [melpa-badge]: http://melpa.org/packages/helm-tramp-badge.svg
 [melpa-stable-link]: http://stable.melpa.org/#/helm-tramp
