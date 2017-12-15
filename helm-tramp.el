@@ -70,7 +70,7 @@
 	       collect (progn (push
 			       (concat "/docker:" (car info) ":/")
 			       hosts)
-			      (unless (null helm-tramp-docker-user)
+			      (when helm-tramp-docker-user
 				(if (listp helm-tramp-docker-user)
 				    (let ((docker-user helm-tramp-docker-user))
 				      (while docker-user
