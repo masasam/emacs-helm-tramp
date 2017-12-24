@@ -4,7 +4,7 @@
 
 ;; Author: Masashı Mıyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 0.7.5
+;; Version: 0.8.5
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -38,9 +38,36 @@
   :group 'helm)
 
 (defcustom helm-tramp-docker-user nil
-  "If you want to use login user name when docker-tramp used, set variable."
+  "If you want to use login user name when `docker-tramp' used, set variable."
   :group 'helm-tramp
   :type 'string)
+
+(defcustom helm-tramp-localhost-directory "/"
+  "Initial directory when connecting with /sudo:root@localhost:."
+  :group 'helm-tramp
+  :type 'string)
+
+(defcustom helm-tramp-pre-command-hook nil
+  "Hook run before `helm-tramp'.
+The hook is called with one argument that is non-nil."
+  :type 'hook)
+
+(defcustom helm-tramp-post-command-hook nil
+  "Hook run after `helm-tramp'.
+The hook is called with one argument that is non-nil."
+  :type 'hook)
+
+(defcustom helm-tramp-quit-hook nil
+  "Hook run when `helm-tramp-quit'.
+The hook is called with one argument that is non-nil."
+  :type 'hook)
+
+(defun helm-tramp-quit ()
+  "Quit helm-tramp.
+Kill all remote buffers."
+  (interactive)
+  (run-hooks 'helm-tramp-quit-hook)
+  (tramp-cleanup-all-buffers))
 
 (defun helm-tramp--candidates ()
   "Collect candidates for helm-tramp."
@@ -86,7 +113,7 @@
                do (progn
                     (push (concat "/vagrant:" box-name ":/") hosts)
                     (push (concat "/vagrant:" box-name "|sudo:" box-name ":/") hosts))))
-    (push "/sudo:root@localhost:/" hosts)
+    (push (concat "/sudo:root@localhost:" helm-tramp-localhost-directory) hosts)
     (reverse hosts)))
 
 (defun helm-tramp-open (path)
@@ -113,7 +140,9 @@ You can connect your server with tramp"
   (when (package-installed-p 'vagrant-tramp)
     (unless (executable-find "vagrant")
       (error "'vagrant' is not installed")))
-  (helm :sources '(helm-tramp--source) :buffer "*helm tramp*"))
+  (run-hooks 'helm-tramp-pre-command-hook)
+  (helm :sources '(helm-tramp--source) :buffer "*helm tramp*")
+  (run-hooks 'helm-tramp-post-command-hook))
 
 (provide 'helm-tramp)
 
