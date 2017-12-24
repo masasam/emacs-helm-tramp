@@ -40,11 +40,9 @@ If you are using [vagrant-tramp](https://github.com/dougm/vagrant-tramp), vagran
 
 You can edit docker container on your emacs!
 
-![helm-exit](image/exit.png)
+	helm-tramp-quit
 
-When you finish editing nginx.conf you clean the tramp buffer with `tramp-cleanup-all-buffers` command.
-
-Since I can not remember `tramp-cleanup-all-buffers` command I set a defalias called `exit-tramp`.
+When you finish editing nginx.conf you clean the tramp buffer with `helm-tramp-quit` command.
 
 ## Requirements
 
@@ -65,8 +63,22 @@ You can install `vagrant-tramp.el` from [MELPA](http://melpa.org) with package.e
 ## Sample Configuration
 
 	(setq tramp-default-method "ssh")
-    (defalias 'exit-tramp 'tramp-cleanup-all-buffers)
     (define-key global-map (kbd "C-c s") 'helm-tramp)
+
+## If you want to speed up tramp
+
+	(add-hook 'helm-tramp-pre-command-hook '(lambda () (global-aggressive-indent-mode 0)
+					     (projectile-mode 0)
+					     (editorconfig-mode 0)))
+	(add-hook 'helm-tramp-quit-hook '(lambda () (global-aggressive-indent-mode 1)
+				      (projectile-mode 1)
+				      (editorconfig-mode 1)))
+
+Setting hook that turn off slow extensions when you execute helm-tramp.
+
+Setting hook that turn on extensions when you execute `helm-tramp-quit` command.
+
+## Misc setting
 
 If the shell of the server is zsh it is recommended to connect with bash.
 
@@ -79,6 +91,10 @@ If you want to specify the user name to connect with docker-tramp.
 If you want to specify multiple user name list to connect with docker-tramp.
 
 	(setq helm-tramp-docker-user '("username1" "username2" "username3" "username4"))
+
+If you want to change initial directory when connecting with /sudo:root@localhost:.
+
+	(setq helm-tramp-localhost-directory "/root")
 
 [melpa-link]: http://melpa.org/#/helm-tramp
 [melpa-badge]: http://melpa.org/packages/helm-tramp-badge.svg
