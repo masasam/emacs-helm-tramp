@@ -60,6 +60,8 @@ You can install `docker-tramp.el` from [MELPA](http://melpa.org) with package.el
 You can install `vagrant-tramp.el` from [MELPA](http://melpa.org) with package.el
 (`M-x package-install vagrant-tramp`).
 
+I recommend you are going to install [exec-path-from-shell]( https://github.com/purcell/exec-path-from-shell).
+
 ## Sample Configuration
 
 	(setq tramp-default-method "ssh")
