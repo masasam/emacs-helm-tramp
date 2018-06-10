@@ -130,12 +130,18 @@ Kill all remote buffers."
   "Tramp open with PATH."
   (find-file path))
 
+(defun helm-tramp-open-shell (path)
+  "Tramp open shell at PATH."
+  (let ((default-directory path))
+    (shell (concat "* Helm tramp shell - " path))))
+
 (defvar helm-tramp--source
   (helm-build-sync-source "Tramp"
     :candidates #'helm-tramp--candidates
     :volatile t
     :action (helm-make-actions
-             "Tramp" #'helm-tramp-open)))
+             "Tramp" #'helm-tramp-open
+             "Shell" #'helm-tramp-open-shell)))
 
 ;;;###autoload
 (defun helm-tramp ()
