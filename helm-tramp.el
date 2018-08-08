@@ -4,7 +4,7 @@
 
 ;; Author: Masashı Mıyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 1.0.5
+;; Version: 1.0.6
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -101,7 +101,7 @@ Kill all remote buffers."
 	    (push
 	     (concat "/ssh:" host "|sudo:" host ":/")
 	     hosts)))))
-    (when (package-installed-p 'docker-tramp)
+    (when (require 'docker-tramp nil t)
       (cl-loop for line in (cdr (ignore-errors (apply #'process-lines "docker" (list "ps"))))
 	       for info = (reverse (split-string line "[[:space:]]+" t))
 	       collect (progn (push
@@ -118,11 +118,11 @@ Kill all remote buffers."
 				  (push
 				   (concat "/docker:" helm-tramp-docker-user "@" (car info) ":/")
 				   hosts))))))
-    (when (package-installed-p 'vagrant-tramp)
+    (when (require 'vagrant-tramp nil t)
       (cl-loop for box-name in (map 'list 'cadr (vagrant-tramp--completions))
-               do (progn
-                    (push (concat "/vagrant:" box-name ":/") hosts)
-                    (push (concat "/vagrant:" box-name "|sudo:" box-name ":/") hosts))))
+	       do (progn
+		    (push (concat "/vagrant:" box-name ":/") hosts)
+		    (push (concat "/vagrant:" box-name "|sudo:" box-name ":/") hosts))))
     (push (concat "/sudo:root@localhost:" helm-tramp-localhost-directory) hosts)
     (reverse hosts)))
 
@@ -150,10 +150,10 @@ You can connect your server with tramp"
   (interactive)
   (unless (file-exists-p "~/.ssh/config")
     (error "There is no ~/.ssh/config"))
-  (when (package-installed-p 'docker-tramp)
+  (when (require 'docker-tramp nil t)
     (unless (executable-find "docker")
       (error "'docker' is not installed")))
-  (when (package-installed-p 'vagrant-tramp)
+  (when (require 'vagrant-tramp nil t)
     (unless (executable-find "vagrant")
       (error "'vagrant' is not installed")))
   (run-hooks 'helm-tramp-pre-command-hook)
