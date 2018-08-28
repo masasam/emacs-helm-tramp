@@ -62,6 +62,11 @@ The hook is called with one argument that is non-nil."
 The hook is called with one argument that is non-nil."
   :type 'hook)
 
+(defcustom helm-tramp-custom-connections '()
+  "A list to manually add extra connections.
+E.g.: '(\"/ssh:domain|sudo:user@localhost:/\")."
+  :type '(repeat string))
+
 (defun helm-tramp-quit ()
   "Quit helm-tramp.
 Kill all remote buffers."
@@ -76,7 +81,7 @@ Kill all remote buffers."
                    (insert-file-contents "~/.ssh/config")
                    (buffer-string))
                  "\n"))
-        (hosts (list)))
+        (hosts helm-tramp-custom-connections))
     (dolist (host source)
       (when (string-match "[H\\|h]ost +\\(.+?\\)$" host)
 	(setq host (match-string 1 host))
