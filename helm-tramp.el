@@ -4,7 +4,7 @@
 
 ;; Author: Masashı Mıyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 1.0.6
+;; Version: 1.1.6
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -64,8 +64,8 @@ The hook is called with one argument that is non-nil."
 
 (defcustom helm-tramp-custom-connections '()
   "A list to manually add extra connections.
-E.g.: '(\"/ssh:domain|sudo:user@localhost:/\")."
-  :type '(repeat string))
+E.g.: '(/ssh:domain|sudo:user@localhost:/)."
+  :type 'string)
 
 (defun helm-tramp-quit ()
   "Quit helm-tramp.
