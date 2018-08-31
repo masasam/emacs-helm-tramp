@@ -44,14 +44,6 @@ You can edit docker container on your emacs!
 
 When you finish editing nginx.conf you clean the tramp buffer with `helm-tramp-quit` command.
 
-Besides ~/.ssh/config, you can add connections manually.
-
-	(setq helm-tramp-custom-connections '(/ssh:domain|sudo:user@localhost:/))
-
-Example when adding more than two connections manually.
-
-	(setq helm-tramp-custom-connections '(/ssh:domain|sudo:user@localhost:/ /ssh:domain2|sudo:user@localhost:/))
-
 ## Requirements
 
 - Emacs 24.3 or higher
@@ -95,6 +87,14 @@ If you don't make a backup files and lockfiles at remote server, it will be save
 
 ## Misc setting
 
+Besides ~/.ssh/config, you can add connections manually.
+
+	(setq helm-tramp-custom-connections '(/ssh:domain|sudo:user@localhost:/))
+
+Example when adding more than two connections manually.
+
+	(setq helm-tramp-custom-connections '(/ssh:domain|sudo:user@localhost:/ /ssh:domain2|sudo:user@localhost:/))
+	
 If the shell of the server is zsh it is recommended to connect with bash.
 
     (eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
