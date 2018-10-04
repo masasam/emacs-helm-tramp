@@ -23,7 +23,6 @@ You can connect your server with tramp.
 ![helm-tramp4](image/image4.png)
 
 Selecting the list with sudo will lead to the server as root.
-
 Selecting the list of '/sudo:root@localhost:/' will open file at localhost as root.
 
 ![helm-tramp5](image/image5.png)
@@ -32,9 +31,8 @@ You can edit your server's nginx.conf on your emacs!
 
 ![docker-tramp](image/docker-tramp.png)
 
-If you are using [docker-tramp](https://github.com/emacs-pe/docker-tramp.el), docker is also supplemented
-
-If you are using [vagrant-tramp](https://github.com/dougm/vagrant-tramp), vagrant is also supplemented
+If you are using [docker-tramp](https://github.com/emacs-pe/docker-tramp.el), docker is also supplemented.
+If you are using [vagrant-tramp](https://github.com/dougm/vagrant-tramp), vagrant is also supplemented.
 
 ![docker-tramp1](image/docker-tramp1.png)
 
@@ -53,10 +51,8 @@ When you finish editing nginx.conf you clean the tramp buffer with `helm-tramp-q
 
 You can install `helm-tramp.el` from [MELPA](http://melpa.org) with package.el
 (`M-x package-install helm-tramp`).
-
 You can install `docker-tramp.el` from [MELPA](http://melpa.org) with package.el
 (`M-x package-install docker-tramp`).
-
 You can install `vagrant-tramp.el` from [MELPA](http://melpa.org) with package.el
 (`M-x package-install vagrant-tramp`).
 
@@ -77,7 +73,6 @@ I recommend you are going to install [exec-path-from-shell]( https://github.com/
 				      (editorconfig-mode 1)))
 
 Setting hook that turn off slow extensions when you execute helm-tramp.
-
 Setting hook that turn on extensions when you execute `helm-tramp-quit` command.
 
 If you don't make a backup files and lockfiles at remote server, it will be saved faster.
