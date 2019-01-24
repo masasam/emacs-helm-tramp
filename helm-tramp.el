@@ -108,6 +108,8 @@ Kill all remote buffers."
 	     hosts))))
       (when (string-match "^Include +\\(.+\\)$" host)
         (setq include-file (match-string 1 host))
+        (when (not (file-name-absolute-p include-file))
+          (setq include-file (concat (file-name-as-directory "~/.ssh") include-file)))
         (when (file-exists-p include-file)
           (setq hosts (append hosts (helm-tramp--candidates include-file))))))
     (when (require 'docker-tramp nil t)
