@@ -106,6 +106,47 @@ If you want to change initial directory when connecting with /sudo:root@localhos
 
 	(setq helm-tramp-localhost-directory "/root")
 
+## Support for top-level sshconfig include
+
+~/.ssh/config
+
+     Include conf.d/work
+	 Include conf.d/personal
+
+~/.ssh/conf.d/work
+
+     Host instance
+			HostName ************
+			User ************
+			
+    Host archtest
+			HostName ************
+			User ************
+
+    Host debiantest
+			HostName ************
+ 			User ************
+
+    Host centostest
+			HostName ************
+			User ************
+
+~/.ssh/conf.d/personal
+
+     Host myserver
+			HostName ************
+			User ************
+			
+    Host myhost
+			HostName ************
+			User ************
+
+Below is not support
+
+~/.ssh/config
+
+     Include conf.d/**
+	 
 [melpa-link]: http://melpa.org/#/helm-tramp
 [melpa-badge]: http://melpa.org/packages/helm-tramp-badge.svg
 [melpa-stable-link]: http://stable.melpa.org/#/helm-tramp
