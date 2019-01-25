@@ -110,12 +110,12 @@ If you want to change initial directory when connecting with /sudo:root@localhos
 
 ~/.ssh/config
 
-     Include conf.d/work
-	 Include conf.d/personal
+    Include conf.d/work
+	Include conf.d/personal
 
 ~/.ssh/conf.d/work
 
-     Host instance
+    Host instance
 			HostName ************
 			User ************
 			
@@ -133,7 +133,7 @@ If you want to change initial directory when connecting with /sudo:root@localhos
 
 ~/.ssh/conf.d/personal
 
-     Host myserver
+    Host myserver
 			HostName ************
 			User ************
 			
@@ -145,7 +145,7 @@ Below is not support
 
 ~/.ssh/config
 
-     Include conf.d/**
+    Include conf.d/**
 	 
 [melpa-link]: http://melpa.org/#/helm-tramp
 [melpa-badge]: http://melpa.org/packages/helm-tramp-badge.svg
