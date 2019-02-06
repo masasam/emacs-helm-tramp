@@ -108,6 +108,8 @@ If you want to change initial directory when connecting with /sudo:root@localhos
 
 ## Support for top-level sshconfig include
 
+In addition to normal .ssh/config, it also supports the following format.
+
 ~/.ssh/config
 
     Include conf.d/work
