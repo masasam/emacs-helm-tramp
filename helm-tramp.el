@@ -130,7 +130,7 @@ Kill all remote buffers."
 				   (concat "/docker:" helm-tramp-docker-user "@" (car info) ":/")
 				   hosts))))))
     (when (require 'vagrant-tramp nil t)
-      (cl-loop for box-name in (map 'list 'cadr (vagrant-tramp--completions))
+      (cl-loop for box-name in (cl-map 'list 'cadr (vagrant-tramp--completions))
 	       do (progn
 		    (push (concat "/vagrant:" box-name ":/") hosts)
 		    (push (concat "/vagrant:" box-name "|sudo:" box-name ":/") hosts))))
