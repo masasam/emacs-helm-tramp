@@ -37,6 +37,11 @@
   "Tramp with helm interface for ssh, docker, vagrant"
   :group 'helm)
 
+(defcustom helm-tramp-default-method "ssh"
+  "Default method when use tramp multi hop."
+  :group 'helm-tramp
+  :type 'string)
+
 (defcustom helm-tramp-docker-user nil
   "If you want to use login user name when `docker-tramp' used, set variable."
   :group 'helm-tramp
@@ -112,14 +117,14 @@ Kill all remote buffers."
 		   (concat "/" tramp-default-method ":" (car result) ":")
 		   hosts)
 		  (push
-		   (concat "/ssh:" (car result) "|sudo:root@" (car result) ":/")
+		   (concat "/" helm-tramp-default-method ":" (car result) "|sudo:root@" (car result) ":/")
 		   hosts)
 		  (pop result)))
 	    (push
 	     (concat "/" tramp-default-method ":" host ":")
 	     hosts)
 	    (push
-	     (concat "/ssh:" host "|sudo:" host ":/")
+	     (concat "/" helm-tramp-default-method ":" host "|sudo:" host ":/")
 	     hosts))))
       (when (string-match "Include +\\(.+\\)$" host)
         (setq include-file (match-string 1 host))
@@ -147,7 +152,7 @@ Kill all remote buffers."
 	       (concat "/" tramp-default-method ":" hostuser "@" hostname "#" port ":")
 	       hosts)
 	      (push
-	       (concat "/ssh:" hostuser "@" hostname "#" port "|sudo:root@" hostname ":/")
+	       (concat "/" helm-tramp-default-method ":" hostuser "@" hostname "#" port "|sudo:root@" hostname ":/")
 	       hosts))))))
     (when (require 'docker-tramp nil t)
       (cl-loop for line in (cdr (ignore-errors (apply #'process-lines "docker" (list "ps"))))
