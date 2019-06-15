@@ -4,7 +4,7 @@
 
 ;; Author: Masashı Mıyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 1.3.7
+;; Version: 1.3.8
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -131,19 +131,23 @@ Kill all remote buffers."
       (let ((files (helm-tramp--directory-files
 		    (expand-file-name
 		     helm-tramp-control-master-path)
-		    helm-tramp-control-master-prefix)))
+		    helm-tramp-control-master-prefix))
+	    (hostuser nil)
+	    (hostname nil)
+	    (port nil))
 	(dolist (controlmaster files)
 	  (let ((file (file-name-nondirectory controlmaster)))
 	    (when (string-match
-		   (concat helm-tramp-control-master-prefix "\\(.+?\\)@\\(.+?\\):.+?$")
+		   (concat helm-tramp-control-master-prefix "\\(.+?\\)@\\(.+?\\):\\(.+?\\)$")
 		   file)
 	      (setq hostuser (match-string 1 file))
 	      (setq hostname (match-string 2 file))
+	      (setq port (match-string 3 file))
 	      (push
-	       (concat "/" tramp-default-method ":" hostuser "@" hostname ":")
+	       (concat "/" tramp-default-method ":" hostuser "@" hostname "#" port ":")
 	       hosts)
 	      (push
-	       (concat "/ssh:" hostuser "@" hostname "|sudo:root@" hostname ":/")
+	       (concat "/ssh:" hostuser "@" hostname "#" port "|sudo:root@" hostname ":/")
 	       hosts))))))
     (when (require 'docker-tramp nil t)
       (cl-loop for line in (cdr (ignore-errors (apply #'process-lines "docker" (list "ps"))))
