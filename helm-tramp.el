@@ -4,7 +4,7 @@
 
 ;; Author: Masashı Mıyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 1.2.7
+;; Version: 1.3.7
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -44,6 +44,21 @@
 
 (defcustom helm-tramp-localhost-directory "/"
   "Initial directory when connecting with /sudo:root@localhost:."
+  :group 'helm-tramp
+  :type 'string)
+
+(defcustom helm-tramp-control-master nil
+  "If you want to put out a candidate for completion from ssh controlmaster, please set to t."
+  :group 'helm-tramp
+  :type 'string)
+
+(defcustom helm-tramp-control-master-path "~/.ssh/"
+  "Path where ssh controlmaster exists."
+  :group 'helm-tramp
+  :type 'string)
+
+(defcustom helm-tramp-control-master-prefix "master-"
+  "Prefix of ssh controlmaster."
   :group 'helm-tramp
   :type 'string)
 
@@ -112,6 +127,24 @@ Kill all remote buffers."
           (setq include-file (concat (file-name-as-directory "~/.ssh") include-file)))
         (when (file-exists-p include-file)
           (setq hosts (append hosts (helm-tramp--candidates include-file))))))
+    (when helm-tramp-control-master
+      (let ((files (helm-tramp--directory-files
+		    (expand-file-name
+		     helm-tramp-control-master-path)
+		    helm-tramp-control-master-prefix)))
+	(dolist (controlmaster files)
+	  (let ((file (file-name-nondirectory controlmaster)))
+	    (when (string-match
+		   (concat helm-tramp-control-master-prefix "\\(.+?\\)@\\(.+?\\):.+?$")
+		   file)
+	      (setq hostuser (match-string 1 file))
+	      (setq hostname (match-string 2 file))
+	      (push
+	       (concat "/" tramp-default-method ":" hostuser "@" hostname ":")
+	       hosts)
+	      (push
+	       (concat "/ssh:" hostuser "@" hostname "|sudo:root@" hostname ":/")
+	       hosts))))))
     (when (require 'docker-tramp nil t)
       (cl-loop for line in (cdr (ignore-errors (apply #'process-lines "docker" (list "ps"))))
 	       for info = (reverse (split-string line "[[:space:]]+" t))
@@ -136,6 +169,29 @@ Kill all remote buffers."
 		    (push (concat "/vagrant:" box-name "|sudo:" box-name ":/") hosts))))
     (push (concat "/sudo:root@localhost:" helm-tramp-localhost-directory) hosts)
     (reverse hosts)))
+
+(defun helm-tramp--directory-files (dir regexp)
+  "Return list of all files under DIR that have file names matching REGEXP."
+  (let ((result nil)
+	(files nil)
+	(tramp-mode (and tramp-mode (file-remote-p (expand-file-name dir)))))
+    (dolist (file (sort (file-name-all-completions "" dir)
+			'string<))
+      (unless (member file '("./" "../"))
+	(if (not (helm-tramp--directory-name-p file))
+	    (when (string-match regexp file)
+	      (push (expand-file-name file dir) files)))))
+    (nconc result (nreverse files))))
+
+(defsubst helm-tramp--directory-name-p (name)
+  "Return non-nil if NAME ends with a directory separator character."
+  (let ((len (length name))
+        (lastc ?.))
+    (if (> len 0)
+        (setq lastc (aref name (1- len))))
+    (or (= lastc ?/)
+        (and (memq system-type '(windows-nt ms-dos))
+             (= lastc ?\\)))))
 
 (defun helm-tramp-open (path)
   "Tramp open with PATH."
