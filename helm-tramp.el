@@ -4,7 +4,7 @@
 
 ;; Author: Masashı Mıyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 1.3.8
+;; Version: 1.3.9
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -124,7 +124,7 @@ Kill all remote buffers."
 	     (concat "/" tramp-default-method ":" host ":")
 	     hosts)
 	    (push
-	     (concat "/" helm-tramp-default-method ":" host "|sudo:" host ":/")
+	     (concat "/" helm-tramp-default-method ":" host "|sudo:root@" host ":/")
 	     hosts))))
       (when (string-match "Include +\\(.+\\)$" host)
         (setq include-file (match-string 1 host))
