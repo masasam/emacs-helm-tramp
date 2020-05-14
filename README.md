@@ -161,7 +161,6 @@ Host *
   ControlMaster auto
   ControlPath ~/.ssh/master-%r@%h:%p
   ControlPersist 30m
-  ForwardAgent yes
   ServerAliveInterval 60
 ```
 Execute the ssh command as follows
