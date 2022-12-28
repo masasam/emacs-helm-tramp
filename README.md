@@ -50,9 +50,10 @@ When you finish editing nginx.conf you clean the tramp buffer with `helm-tramp-q
 ## Installation
 
 You can install `helm-tramp.el` from [MELPA](http://melpa.org) with package.el
-(`M-x package-install helm-tramp`).
+(`M-x package-install helm-tramp`).  
 You can install `docker-tramp.el` from [MELPA](http://melpa.org) with package.el
-(`M-x package-install docker-tramp`).
+(`M-x package-install docker-tramp`).  
+If you use Emacs version >= 29.0.60 then docker-tramp is no longer necessary as this functionality is built-in to Tramp.  
 You can install `vagrant-tramp.el` from [MELPA](http://melpa.org) with package.el
 (`M-x package-install vagrant-tramp`).
 
