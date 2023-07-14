@@ -4,7 +4,7 @@
 
 ;; Author: Masashi Miyaura
 ;; URL: https://github.com/masasam/emacs-helm-tramp
-;; Version: 1.3.10
+;; Version: 1.3.11
 ;; Package-Requires: ((emacs "24.3") (helm "2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -229,7 +229,7 @@ You can connect your server with tramp"
     (error "There is no ~/.ssh/config"))
   (when (or (version<= "29.0.60" emacs-version) (require 'docker-tramp nil t))
     (unless (executable-find "docker")
-      (error "'docker' is not installed")))
+      (message "'docker' is not installed")))
   (when (require 'vagrant-tramp nil t)
     (unless (executable-find "vagrant")
       (error "'vagrant' is not installed")))
